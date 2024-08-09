@@ -1,0 +1,47 @@
+{
+  "collectionName": "components_sections_feature_sections",
+  "info": {
+    "displayName": "Feature Section",
+    "icon": "apps",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "subHeading": {
+      "type": "text",
+      "required": true
+    },
+    "image1": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "image2": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "feature": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.feature",
+      "required": true
+    },
+    "buttonLink": {
+      "type": "component",
+      "repeatable": false,
+      "component": "components.button-link",
+      "required": true
+    }
+  }
+}

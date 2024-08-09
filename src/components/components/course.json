@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_components_courses",
+  "info": {
+    "displayName": "Course",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "logo": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "name": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::course.course"
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "components.link",
+      "required": true
+    }
+  }
+}

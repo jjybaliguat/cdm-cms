@@ -888,17 +888,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    comments: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToMany',
-      'api::comment.comment'
-    >;
     jwt: Attribute.Text;
-    likes: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToMany',
-      'api::like.like'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -965,63 +955,12 @@ export interface PluginEmailDesignerEmailTemplate
   };
 }
 
-export interface ApiBlogBlog extends Schema.CollectionType {
-  collectionName: 'blogs';
+export interface ApiCourseCourse extends Schema.CollectionType {
+  collectionName: 'courses';
   info: {
-    singularName: 'blog';
-    pluralName: 'blogs';
-    displayName: 'Blog Post';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String &
-      Attribute.Required &
-      Attribute.Unique &
-      Attribute.SetMinMaxLength<{
-        maxLength: 255;
-      }>;
-    description: Attribute.Text;
-    thumbnail: Attribute.Media<'images'> & Attribute.Required;
-    slug: Attribute.UID<'api::blog.blog', 'title'>;
-    category: Attribute.Relation<
-      'api::blog.blog',
-      'manyToOne',
-      'api::category.category'
-    >;
-    comments: Attribute.Relation<
-      'api::blog.blog',
-      'oneToMany',
-      'api::comment.comment'
-    >;
-    content: Attribute.RichText &
-      Attribute.CustomField<
-        'plugin::ckeditor.CKEditor',
-        {
-          output: 'HTML';
-          preset: 'rich';
-        }
-      >;
-    SEO: Attribute.Component<'page-properties-seo.seo'> & Attribute.Required;
-    mdx: Attribute.RichText;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiCategoryCategory extends Schema.CollectionType {
-  collectionName: 'categories';
-  info: {
-    singularName: 'category';
-    pluralName: 'categories';
-    displayName: 'Blog Category';
+    singularName: 'course';
+    pluralName: 'courses';
+    displayName: 'Course';
     description: '';
   };
   options: {
@@ -1029,22 +968,21 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String & Attribute.Required;
-    slug: Attribute.UID<'api::category.category', 'name'> & Attribute.Required;
-    blogs: Attribute.Relation<
-      'api::category.category',
-      'oneToMany',
-      'api::blog.blog'
+    department: Attribute.Relation<
+      'api::course.course',
+      'manyToOne',
+      'api::department.department'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::category.category',
+      'api::course.course',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::category.category',
+      'api::course.course',
       'oneToOne',
       'admin::user'
     > &
@@ -1052,94 +990,34 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
-export interface ApiCommentComment extends Schema.CollectionType {
-  collectionName: 'comments';
+export interface ApiDepartmentDepartment extends Schema.CollectionType {
+  collectionName: 'departments';
   info: {
-    singularName: 'comment';
-    pluralName: 'comments';
-    displayName: 'Comment';
+    singularName: 'department';
+    pluralName: 'departments';
+    displayName: 'Department';
     description: '';
   };
   options: {
     draftAndPublish: false;
   };
   attributes: {
-    comment: Attribute.Text;
-    blog: Attribute.Relation<
-      'api::comment.comment',
-      'manyToOne',
-      'api::blog.blog'
-    >;
-    author: Attribute.Relation<
-      'api::comment.comment',
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
-    likes: Attribute.Relation<
-      'api::comment.comment',
+    name: Attribute.String & Attribute.Required;
+    courses: Attribute.Relation<
+      'api::department.department',
       'oneToMany',
-      'api::like.like'
-    >;
-    parent: Attribute.Relation<
-      'api::comment.comment',
-      'manyToOne',
-      'api::comment.comment'
-    >;
-    replies: Attribute.Relation<
-      'api::comment.comment',
-      'oneToMany',
-      'api::comment.comment'
+      'api::course.course'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::comment.comment',
+      'api::department.department',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::comment.comment',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiCourseCourse extends Schema.CollectionType {
-  collectionName: 'courses';
-  info: {
-    singularName: 'course';
-    pluralName: 'courses';
-    displayName: 'Courses';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    course_name: Attribute.String;
-    course_img: Attribute.Media<'images'>;
-    units: Attribute.Integer;
-    content: Attribute.RichText &
-      Attribute.CustomField<
-        'plugin::ckeditor.CKEditor',
-        {
-          output: 'HTML';
-          preset: 'rich';
-        }
-      >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::course.course',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::course.course',
+      'api::department.department',
       'oneToOne',
       'admin::user'
     > &
@@ -1162,7 +1040,6 @@ export interface ApiGlobalGlobal extends Schema.SingleType {
     title: Attribute.String;
     description: Attribute.Text;
     header: Attribute.Component<'layout.header'>;
-    footer: Attribute.Component<'layout.footer'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1192,9 +1069,16 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String;
-    description: Attribute.String;
-    blocks: Attribute.DynamicZone<['layout.hero-section']>;
+    blocks: Attribute.DynamicZone<
+      [
+        'sections.course-section',
+        'sections.cta-section',
+        'sections.faculty-section',
+        'sections.feature-section',
+        'sections.hero-section',
+        'sections.reviews-section'
+      ]
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1213,42 +1097,12 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
   };
 }
 
-export interface ApiLikeLike extends Schema.CollectionType {
-  collectionName: 'likes';
+export interface ApiInstructorInstructor extends Schema.CollectionType {
+  collectionName: 'instructors';
   info: {
-    singularName: 'like';
-    pluralName: 'likes';
-    displayName: 'Likes';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    comment: Attribute.Relation<
-      'api::like.like',
-      'manyToOne',
-      'api::comment.comment'
-    >;
-    author: Attribute.Relation<
-      'api::like.like',
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::like.like', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::like.like', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiMaincarouselMaincarousel extends Schema.CollectionType {
-  collectionName: 'maincarousels';
-  info: {
-    singularName: 'maincarousel';
-    pluralName: 'maincarousels';
-    displayName: 'Main Image Carousel';
+    singularName: 'instructor';
+    pluralName: 'instructors';
+    displayName: 'Instructor';
     description: '';
   };
   options: {
@@ -1256,19 +1110,55 @@ export interface ApiMaincarouselMaincarousel extends Schema.CollectionType {
   };
   attributes: {
     image: Attribute.Media<'images'> & Attribute.Required;
+    name: Attribute.String & Attribute.Required;
+    role: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::maincarousel.maincarousel',
+      'api::instructor.instructor',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::maincarousel.maincarousel',
+      'api::instructor.instructor',
       'oneToOne',
       'admin::user'
     > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPagePage extends Schema.CollectionType {
+  collectionName: 'pages';
+  info: {
+    singularName: 'page';
+    pluralName: 'pages';
+    displayName: 'Page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    sections: Attribute.DynamicZone<
+      [
+        'sections.hero-section',
+        'sections.course-section',
+        'sections.feature-section',
+        'sections.cta-section',
+        'sections.faculty-section',
+        'sections.reviews-section'
+      ]
+    >;
+    slug: Attribute.UID<'api::page.page', 'name'> & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -1295,14 +1185,12 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::email-designer.email-template': PluginEmailDesignerEmailTemplate;
-      'api::blog.blog': ApiBlogBlog;
-      'api::category.category': ApiCategoryCategory;
-      'api::comment.comment': ApiCommentComment;
       'api::course.course': ApiCourseCourse;
+      'api::department.department': ApiDepartmentDepartment;
       'api::global.global': ApiGlobalGlobal;
       'api::home-page.home-page': ApiHomePageHomePage;
-      'api::like.like': ApiLikeLike;
-      'api::maincarousel.maincarousel': ApiMaincarouselMaincarousel;
+      'api::instructor.instructor': ApiInstructorInstructor;
+      'api::page.page': ApiPagePage;
     }
   }
 }

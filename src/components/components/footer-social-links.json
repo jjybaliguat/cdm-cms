@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_components_footer_social_links",
+  "info": {
+    "displayName": "Footer Social Links"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "imageLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.image-link"
+    }
+  }
+}

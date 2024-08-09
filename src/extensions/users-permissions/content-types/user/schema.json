@@ -65,20 +65,8 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "comments": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::comment.comment",
-      "mappedBy": "author"
-    },
     "jwt": {
       "type": "text"
-    },
-    "likes": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::like.like",
-      "mappedBy": "author"
     }
   }
 }

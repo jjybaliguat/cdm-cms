@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_sections_course_sections",
+  "info": {
+    "displayName": "Course Section",
+    "icon": "apps",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "subHeading": {
+      "type": "text",
+      "required": true
+    },
+    "link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "components.link"
+    },
+    "courses": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.course"
+    }
+  }
+}

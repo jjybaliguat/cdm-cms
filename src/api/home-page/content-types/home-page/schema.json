@@ -11,16 +11,15 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
-      "type": "string"
-    },
-    "description": {
-      "type": "string"
-    },
     "blocks": {
       "type": "dynamiczone",
       "components": [
-        "layout.hero-section"
+        "sections.course-section",
+        "sections.cta-section",
+        "sections.faculty-section",
+        "sections.feature-section",
+        "sections.hero-section",
+        "sections.reviews-section"
       ]
     }
   }

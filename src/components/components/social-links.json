@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_components_social_links",
+  "info": {
+    "displayName": "Social Links",
+    "icon": "exit"
+  },
+  "options": {},
+  "attributes": {
+    "link": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.image-link",
+      "required": true
+    }
+  }
+}
