@@ -1058,11 +1058,11 @@ export interface ApiGlobalGlobal extends Schema.SingleType {
   };
 }
 
-export interface ApiHomePageHomePage extends Schema.SingleType {
-  collectionName: 'home_pages';
+export interface ApiHomepageHomepage extends Schema.SingleType {
+  collectionName: 'homepages';
   info: {
-    singularName: 'home-page';
-    pluralName: 'home-pages';
+    singularName: 'homepage';
+    pluralName: 'homepages';
     displayName: 'Home Page';
   };
   options: {
@@ -1083,13 +1083,13 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::home-page.home-page',
+      'api::homepage.homepage',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::home-page.home-page',
+      'api::homepage.homepage',
       'oneToOne',
       'admin::user'
     > &
@@ -1188,7 +1188,7 @@ declare module '@strapi/types' {
       'api::course.course': ApiCourseCourse;
       'api::department.department': ApiDepartmentDepartment;
       'api::global.global': ApiGlobalGlobal;
-      'api::home-page.home-page': ApiHomePageHomePage;
+      'api::homepage.homepage': ApiHomepageHomepage;
       'api::instructor.instructor': ApiInstructorInstructor;
       'api::page.page': ApiPagePage;
     }

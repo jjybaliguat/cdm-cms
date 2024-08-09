@@ -1,9 +1,9 @@
 {
   "kind": "singleType",
-  "collectionName": "home_pages",
+  "collectionName": "homepages",
   "info": {
-    "singularName": "home-page",
-    "pluralName": "home-pages",
+    "singularName": "homepage",
+    "pluralName": "homepages",
     "displayName": "Home Page"
   },
   "options": {
