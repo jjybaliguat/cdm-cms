@@ -18,7 +18,7 @@
     "description": {
       "type": "text"
     },
-    "header": {
+    "navbar": {
       "displayName": "Header",
       "type": "component",
       "repeatable": false,

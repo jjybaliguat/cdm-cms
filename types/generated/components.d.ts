@@ -9,7 +9,7 @@ export interface ComponentsButtonLink extends Schema.Component {
   attributes: {
     theme: Attribute.Enumeration<['primary', 'secondary', 'ghost']> &
       Attribute.Required;
-    link: Attribute.String & Attribute.Required;
+    url: Attribute.String & Attribute.Required;
     label: Attribute.String & Attribute.Required;
     isExternal: Attribute.Boolean & Attribute.DefaultTo<false>;
   };
@@ -177,7 +177,7 @@ export interface LayoutFooter extends Schema.Component {
 export interface LayoutHeader extends Schema.Component {
   collectionName: 'components_layout_headers';
   info: {
-    displayName: 'Header';
+    displayName: 'Navigation';
     description: '';
   };
   attributes: {
