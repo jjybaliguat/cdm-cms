@@ -181,10 +181,10 @@ export interface LayoutHeader extends Schema.Component {
     description: '';
   };
   attributes: {
-    logoText: Attribute.Component<'components.link'>;
-    logo: Attribute.Media<'images'>;
+    logoText: Attribute.Component<'components.link'> & Attribute.Required;
+    logo: Attribute.Media<'images'> & Attribute.Required;
     ctaButton: Attribute.Component<'components.link'>;
-    navlinks: Attribute.Component<'components.link', true>;
+    navLinks: Attribute.Component<'components.link', true> & Attribute.Required;
   };
 }
 
