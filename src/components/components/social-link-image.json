@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_components_social_link_images",
+  "info": {
+    "displayName": "socialLink",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "social_link": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::social-link.social-link"
+    }
+  }
+}

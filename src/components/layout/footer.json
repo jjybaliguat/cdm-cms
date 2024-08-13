@@ -6,16 +6,35 @@
   },
   "options": {},
   "attributes": {
-    "newsLetter": {
-      "type": "component",
-      "repeatable": false,
-      "component": "components.news-letter"
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "subHeading": {
+      "type": "text",
+      "required": true
+    },
+    "socialLinkText": {
+      "type": "string",
+      "required": true
     },
     "socialLinks": {
-      "displayName": "Footer Social Links",
       "type": "component",
-      "repeatable": false,
-      "component": "components.footer-social-links"
+      "repeatable": true,
+      "component": "components.social-link-image"
+    },
+    "copyrightText": {
+      "type": "blocks"
+    },
+    "footerLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.link"
+    },
+    "navigation": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.link"
     }
   }
 }

@@ -45,40 +45,6 @@ export interface ComponentsFeature extends Schema.Component {
   };
 }
 
-export interface ComponentsFooterContact extends Schema.Component {
-  collectionName: 'components_components_footer_contacts';
-  info: {
-    displayName: 'Footer Contact';
-    description: '';
-  };
-  attributes: {
-    heading: Attribute.String & Attribute.Required;
-  };
-}
-
-export interface ComponentsFooterSocialLinks extends Schema.Component {
-  collectionName: 'components_components_footer_social_links';
-  info: {
-    displayName: 'Footer Social Links';
-  };
-  attributes: {
-    text: Attribute.String & Attribute.Required;
-    imageLinks: Attribute.Component<'components.image-link', true>;
-  };
-}
-
-export interface ComponentsImageLink extends Schema.Component {
-  collectionName: 'components_components_image_links';
-  info: {
-    displayName: 'imageLink';
-    icon: 'exit';
-  };
-  attributes: {
-    image: Attribute.Media<'images'> & Attribute.Required;
-    url: Attribute.String & Attribute.Required;
-  };
-}
-
 export interface ComponentsInstructor extends Schema.Component {
   collectionName: 'components_components_instructors';
   info: {
@@ -106,19 +72,6 @@ export interface ComponentsLink extends Schema.Component {
   };
 }
 
-export interface ComponentsNewsLetter extends Schema.Component {
-  collectionName: 'components_components_news_letters';
-  info: {
-    displayName: 'News Letter';
-    icon: 'envelop';
-  };
-  attributes: {
-    heading: Attribute.String & Attribute.Required;
-    subHeading: Attribute.Text & Attribute.Required;
-    policyTerms: Attribute.Blocks & Attribute.Required;
-  };
-}
-
 export interface ComponentsReviews extends Schema.Component {
   collectionName: 'components_components_reviews';
   info: {
@@ -133,15 +86,18 @@ export interface ComponentsReviews extends Schema.Component {
   };
 }
 
-export interface ComponentsSocialLinks extends Schema.Component {
-  collectionName: 'components_components_social_links';
+export interface ComponentsSocialLinkImage extends Schema.Component {
+  collectionName: 'components_components_social_link_images';
   info: {
-    displayName: 'Social Links';
-    icon: 'exit';
+    displayName: 'socialLink';
+    description: '';
   };
   attributes: {
-    link: Attribute.Component<'components.image-link', true> &
-      Attribute.Required;
+    social_link: Attribute.Relation<
+      'components.social-link-image',
+      'oneToOne',
+      'api::social-link.social-link'
+    >;
   };
 }
 
@@ -169,8 +125,13 @@ export interface LayoutFooter extends Schema.Component {
     description: '';
   };
   attributes: {
-    newsLetter: Attribute.Component<'components.news-letter'>;
-    socialLinks: Attribute.Component<'components.footer-social-links'>;
+    heading: Attribute.String & Attribute.Required;
+    subHeading: Attribute.Text & Attribute.Required;
+    socialLinkText: Attribute.String & Attribute.Required;
+    socialLinks: Attribute.Component<'components.social-link-image', true>;
+    copyrightText: Attribute.Blocks;
+    footerLinks: Attribute.Component<'components.link', true>;
+    navigation: Attribute.Component<'components.link', true>;
   };
 }
 
@@ -315,14 +276,10 @@ declare module '@strapi/types' {
       'components.button-link': ComponentsButtonLink;
       'components.course': ComponentsCourse;
       'components.feature': ComponentsFeature;
-      'components.footer-contact': ComponentsFooterContact;
-      'components.footer-social-links': ComponentsFooterSocialLinks;
-      'components.image-link': ComponentsImageLink;
       'components.instructor': ComponentsInstructor;
       'components.link': ComponentsLink;
-      'components.news-letter': ComponentsNewsLetter;
       'components.reviews': ComponentsReviews;
-      'components.social-links': ComponentsSocialLinks;
+      'components.social-link-image': ComponentsSocialLinkImage;
       'components.student': ComponentsStudent;
       'layout.footer': LayoutFooter;
       'layout.header': LayoutHeader;

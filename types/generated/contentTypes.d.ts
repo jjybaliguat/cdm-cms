@@ -1040,6 +1040,7 @@ export interface ApiGlobalGlobal extends Schema.SingleType {
     title: Attribute.String;
     description: Attribute.Text;
     header: Attribute.Component<'layout.header'>;
+    footer: Attribute.Component<'layout.footer'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1152,13 +1153,44 @@ export interface ApiPagePage extends Schema.CollectionType {
         'sections.reviews-section'
       ]
     >;
-    slug: Attribute.UID<'api::page.page', 'name'> & Attribute.Required;
+    slug: Attribute.UID<'api::page.page', 'name'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSocialLinkSocialLink extends Schema.CollectionType {
+  collectionName: 'social_links';
+  info: {
+    singularName: 'social-link';
+    pluralName: 'social-links';
+    displayName: 'Social Link';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    image: Attribute.Media<'images'>;
+    linkText: Attribute.Component<'components.link', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::social-link.social-link',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::social-link.social-link',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
@@ -1191,6 +1223,7 @@ declare module '@strapi/types' {
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::instructor.instructor': ApiInstructorInstructor;
       'api::page.page': ApiPagePage;
+      'api::social-link.social-link': ApiSocialLinkSocialLink;
     }
   }
 }
