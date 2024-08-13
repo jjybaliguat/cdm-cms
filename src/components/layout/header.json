@@ -1,7 +1,7 @@
 {
   "collectionName": "components_layout_headers",
   "info": {
-    "displayName": "Header",
+    "displayName": "Navigation",
     "description": ""
   },
   "options": {},
@@ -9,12 +9,13 @@
     "logoText": {
       "type": "component",
       "repeatable": false,
-      "component": "components.link"
+      "component": "components.link",
+      "required": true
     },
     "logo": {
       "type": "media",
       "multiple": false,
-      "required": false,
+      "required": true,
       "allowedTypes": [
         "images"
       ]
@@ -24,10 +25,11 @@
       "repeatable": false,
       "component": "components.link"
     },
-    "navlinks": {
+    "navLinks": {
       "type": "component",
       "repeatable": true,
-      "component": "components.link"
+      "component": "components.link",
+      "required": true
     }
   }
 }

@@ -9,7 +9,7 @@ export interface ComponentsButtonLink extends Schema.Component {
   attributes: {
     theme: Attribute.Enumeration<['primary', 'secondary', 'ghost']> &
       Attribute.Required;
-    link: Attribute.String & Attribute.Required;
+    url: Attribute.String & Attribute.Required;
     label: Attribute.String & Attribute.Required;
     isExternal: Attribute.Boolean & Attribute.DefaultTo<false>;
   };
@@ -138,14 +138,14 @@ export interface LayoutFooter extends Schema.Component {
 export interface LayoutHeader extends Schema.Component {
   collectionName: 'components_layout_headers';
   info: {
-    displayName: 'Header';
+    displayName: 'Navigation';
     description: '';
   };
   attributes: {
-    logoText: Attribute.Component<'components.link'>;
-    logo: Attribute.Media<'images'>;
+    logoText: Attribute.Component<'components.link'> & Attribute.Required;
+    logo: Attribute.Media<'images'> & Attribute.Required;
     ctaButton: Attribute.Component<'components.link'>;
-    navlinks: Attribute.Component<'components.link', true>;
+    navLinks: Attribute.Component<'components.link', true> & Attribute.Required;
   };
 }
 
