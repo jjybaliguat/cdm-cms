@@ -4,24 +4,33 @@
   "info": {
     "singularName": "social-link",
     "pluralName": "social-links",
-    "displayName": "Social Link"
+    "displayName": "Social Link",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "image": {
-      "allowedTypes": [
-        "images"
-      ],
-      "type": "media",
-      "multiple": false
+    "name": {
+      "type": "string",
+      "required": true
     },
-    "linkText": {
-      "type": "component",
-      "repeatable": true,
-      "component": "components.link"
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "enumeration",
+      "enum": [
+        "facebook",
+        "instagram",
+        "twitter",
+        "phone",
+        "mail"
+      ],
+      "required": true,
+      "default": "facebook"
     }
   }
 }

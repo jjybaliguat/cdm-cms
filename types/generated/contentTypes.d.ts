@@ -1170,13 +1170,19 @@ export interface ApiSocialLinkSocialLink extends Schema.CollectionType {
     singularName: 'social-link';
     pluralName: 'social-links';
     displayName: 'Social Link';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    image: Attribute.Media<'images'>;
-    linkText: Attribute.Component<'components.link', true>;
+    name: Attribute.String & Attribute.Required;
+    url: Attribute.String & Attribute.Required;
+    icon: Attribute.Enumeration<
+      ['facebook', 'instagram', 'twitter', 'phone', 'mail']
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'facebook'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

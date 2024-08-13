@@ -93,11 +93,12 @@ export interface ComponentsSocialLinkImage extends Schema.Component {
     description: '';
   };
   attributes: {
-    social_link: Attribute.Relation<
-      'components.social-link-image',
-      'oneToOne',
-      'api::social-link.social-link'
+    name: Attribute.String & Attribute.Required;
+    url: Attribute.String & Attribute.Required;
+    icon: Attribute.Enumeration<
+      ['facebook', 'instagram', 'twitter', 'phone', 'mail']
     >;
+    label: Attribute.String & Attribute.Required;
   };
 }
 
