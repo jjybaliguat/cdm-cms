@@ -6,25 +6,17 @@
   },
   "options": {},
   "attributes": {
-    "name": {
-      "type": "string",
-      "required": true
-    },
-    "url": {
-      "type": "string",
-      "required": true
-    },
     "icon": {
       "type": "enumeration",
       "enum": [
         "facebook",
         "instagram",
         "twitter",
-        "phone",
-        "mail"
-      ]
+        "youtube"
+      ],
+      "required": true
     },
-    "label": {
+    "url": {
       "type": "string",
       "required": true
     }

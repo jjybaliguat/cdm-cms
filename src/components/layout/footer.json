@@ -14,11 +14,7 @@
       "type": "text",
       "required": true
     },
-    "socialLinkText": {
-      "type": "string",
-      "required": true
-    },
-    "socialLinks": {
+    "contact": {
       "type": "component",
       "repeatable": true,
       "component": "components.social-link-image"
@@ -35,6 +31,11 @@
       "type": "component",
       "repeatable": true,
       "component": "components.link"
+    },
+    "socialLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.social-link-image"
     }
   }
 }

@@ -93,12 +93,11 @@ export interface ComponentsSocialLinkImage extends Schema.Component {
     description: '';
   };
   attributes: {
-    name: Attribute.String & Attribute.Required;
-    url: Attribute.String & Attribute.Required;
     icon: Attribute.Enumeration<
-      ['facebook', 'instagram', 'twitter', 'phone', 'mail']
-    >;
-    label: Attribute.String & Attribute.Required;
+      ['facebook', 'instagram', 'twitter', 'youtube']
+    > &
+      Attribute.Required;
+    url: Attribute.String & Attribute.Required;
   };
 }
 
@@ -128,11 +127,11 @@ export interface LayoutFooter extends Schema.Component {
   attributes: {
     heading: Attribute.String & Attribute.Required;
     subHeading: Attribute.Text & Attribute.Required;
-    socialLinkText: Attribute.String & Attribute.Required;
-    socialLinks: Attribute.Component<'components.social-link-image', true>;
+    contact: Attribute.Component<'components.social-link-image', true>;
     copyrightText: Attribute.Blocks;
     footerLinks: Attribute.Component<'components.link', true>;
     navigation: Attribute.Component<'components.link', true>;
+    socialLinks: Attribute.Component<'components.social-link-image', true>;
   };
 }
 
