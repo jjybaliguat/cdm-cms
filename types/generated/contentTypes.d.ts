@@ -1164,43 +1164,6 @@ export interface ApiPagePage extends Schema.CollectionType {
   };
 }
 
-export interface ApiSocialLinkSocialLink extends Schema.CollectionType {
-  collectionName: 'social_links';
-  info: {
-    singularName: 'social-link';
-    pluralName: 'social-links';
-    displayName: 'Social Link';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String & Attribute.Required;
-    url: Attribute.String & Attribute.Required;
-    icon: Attribute.Enumeration<
-      ['facebook', 'instagram', 'twitter', 'phone', 'mail']
-    > &
-      Attribute.Required &
-      Attribute.DefaultTo<'facebook'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::social-link.social-link',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::social-link.social-link',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1229,7 +1192,6 @@ declare module '@strapi/types' {
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::instructor.instructor': ApiInstructorInstructor;
       'api::page.page': ApiPagePage;
-      'api::social-link.social-link': ApiSocialLinkSocialLink;
     }
   }
 }
