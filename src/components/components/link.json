@@ -12,7 +12,7 @@
     },
     "url": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "isExternal": {
       "type": "boolean",
