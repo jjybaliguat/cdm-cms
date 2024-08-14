@@ -17,6 +17,11 @@
     "isExternal": {
       "type": "boolean",
       "default": false
+    },
+    "page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
     }
   }
 }

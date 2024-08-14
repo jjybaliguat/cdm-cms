@@ -1152,7 +1152,8 @@ export interface ApiPagePage extends Schema.CollectionType {
         'sections.feature-section',
         'sections.cta-section',
         'sections.faculty-section',
-        'sections.reviews-section'
+        'sections.reviews-section',
+        'sections.newsletter-section'
       ]
     >;
     slug: Attribute.UID<'api::page.page', 'name'>;
