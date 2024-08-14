@@ -9,9 +9,14 @@ export interface ComponentsButtonLink extends Schema.Component {
   attributes: {
     theme: Attribute.Enumeration<['primary', 'secondary', 'ghost']> &
       Attribute.Required;
-    url: Attribute.String & Attribute.Required;
+    url: Attribute.String;
     label: Attribute.String & Attribute.Required;
     isExternal: Attribute.Boolean & Attribute.DefaultTo<false>;
+    page: Attribute.Relation<
+      'components.button-link',
+      'oneToOne',
+      'api::page.page'
+    >;
   };
 }
 

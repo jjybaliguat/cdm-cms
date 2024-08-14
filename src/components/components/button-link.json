@@ -17,7 +17,7 @@
     },
     "url": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "label": {
       "type": "string",
@@ -26,6 +26,11 @@
     "isExternal": {
       "type": "boolean",
       "default": false
+    },
+    "page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
     }
   }
 }
