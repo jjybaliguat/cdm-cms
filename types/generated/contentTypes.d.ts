@@ -1145,7 +1145,7 @@ export interface ApiPagePage extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String & Attribute.Required;
-    sections: Attribute.DynamicZone<
+    blocks: Attribute.DynamicZone<
       [
         'sections.hero-section',
         'sections.course-section',

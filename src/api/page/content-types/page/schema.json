@@ -16,7 +16,7 @@
       "type": "string",
       "required": true
     },
-    "sections": {
+    "blocks": {
       "type": "dynamiczone",
       "components": [
         "sections.hero-section",
