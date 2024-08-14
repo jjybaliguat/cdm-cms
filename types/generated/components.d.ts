@@ -78,7 +78,7 @@ export interface ComponentsLink extends Schema.Component {
   };
   attributes: {
     text: Attribute.String & Attribute.Required;
-    url: Attribute.String & Attribute.Required;
+    url: Attribute.String;
     isExternal: Attribute.Boolean & Attribute.DefaultTo<false>;
     page: Attribute.Relation<'components.link', 'oneToOne', 'api::page.page'>;
   };
