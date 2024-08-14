@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_components_contacts",
+  "info": {
+    "displayName": "contact"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "enumeration",
+      "enum": [
+        "phone-icon",
+        "mail-icon",
+        "map-icon"
+      ]
+    },
+    "contactLink": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.link"
+    }
+  }
+}

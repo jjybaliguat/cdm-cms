@@ -14,11 +14,6 @@
       "type": "text",
       "required": true
     },
-    "contact": {
-      "type": "component",
-      "repeatable": true,
-      "component": "components.social-link-image"
-    },
     "copyrightText": {
       "type": "blocks"
     },
@@ -36,6 +31,12 @@
       "type": "component",
       "repeatable": true,
       "component": "components.social-link-image"
+    },
+    "contact": {
+      "displayName": "contact",
+      "type": "component",
+      "repeatable": true,
+      "component": "components.contact"
     }
   }
 }

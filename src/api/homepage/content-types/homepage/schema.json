@@ -4,7 +4,8 @@
   "info": {
     "singularName": "homepage",
     "pluralName": "homepages",
-    "displayName": "Home Page"
+    "displayName": "Home Page",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -19,7 +20,8 @@
         "sections.faculty-section",
         "sections.feature-section",
         "sections.hero-section",
-        "sections.reviews-section"
+        "sections.reviews-section",
+        "sections.newsletter-section"
       ]
     }
   }

@@ -15,6 +15,17 @@ export interface ComponentsButtonLink extends Schema.Component {
   };
 }
 
+export interface ComponentsContact extends Schema.Component {
+  collectionName: 'components_components_contacts';
+  info: {
+    displayName: 'contact';
+  };
+  attributes: {
+    icon: Attribute.Enumeration<['phone-icon', 'mail-icon', 'map-icon']>;
+    contactLink: Attribute.Component<'components.link', true>;
+  };
+}
+
 export interface ComponentsCourse extends Schema.Component {
   collectionName: 'components_components_courses';
   info: {
@@ -127,11 +138,11 @@ export interface LayoutFooter extends Schema.Component {
   attributes: {
     heading: Attribute.String & Attribute.Required;
     subHeading: Attribute.Text & Attribute.Required;
-    contact: Attribute.Component<'components.social-link-image', true>;
     copyrightText: Attribute.Blocks;
     footerLinks: Attribute.Component<'components.link', true>;
     navigation: Attribute.Component<'components.link', true>;
     socialLinks: Attribute.Component<'components.social-link-image', true>;
+    contact: Attribute.Component<'components.contact', true>;
   };
 }
 
@@ -255,6 +266,19 @@ export interface SectionsHeroSection extends Schema.Component {
   };
 }
 
+export interface SectionsNewsletterSection extends Schema.Component {
+  collectionName: 'components_sections_newsletter_sections';
+  info: {
+    displayName: 'Newsletter Section';
+    description: '';
+  };
+  attributes: {
+    heading: Attribute.String & Attribute.Required;
+    subHeading: Attribute.String & Attribute.Required;
+    checkboxTermsLabel: Attribute.Blocks & Attribute.Required;
+  };
+}
+
 export interface SectionsReviewsSection extends Schema.Component {
   collectionName: 'components_sections_reviews_sections';
   info: {
@@ -274,6 +298,7 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'components.button-link': ComponentsButtonLink;
+      'components.contact': ComponentsContact;
       'components.course': ComponentsCourse;
       'components.feature': ComponentsFeature;
       'components.instructor': ComponentsInstructor;
@@ -290,6 +315,7 @@ declare module '@strapi/types' {
       'sections.faculty-section': SectionsFacultySection;
       'sections.feature-section': SectionsFeatureSection;
       'sections.hero-section': SectionsHeroSection;
+      'sections.newsletter-section': SectionsNewsletterSection;
       'sections.reviews-section': SectionsReviewsSection;
     }
   }
