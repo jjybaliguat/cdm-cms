@@ -1079,7 +1079,8 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
         'sections.feature-section',
         'sections.hero-section',
         'sections.reviews-section',
-        'sections.newsletter-section'
+        'sections.newsletter-section',
+        'sections.contact-section'
       ]
     >;
     createdAt: Attribute.DateTime;
@@ -1153,7 +1154,8 @@ export interface ApiPagePage extends Schema.CollectionType {
         'sections.cta-section',
         'sections.faculty-section',
         'sections.reviews-section',
-        'sections.newsletter-section'
+        'sections.newsletter-section',
+        'sections.contact-section'
       ]
     >;
     slug: Attribute.UID<'api::page.page', 'name'>;

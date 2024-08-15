@@ -21,7 +21,8 @@
         "sections.feature-section",
         "sections.hero-section",
         "sections.reviews-section",
-        "sections.newsletter-section"
+        "sections.newsletter-section",
+        "sections.contact-section"
       ]
     }
   }
