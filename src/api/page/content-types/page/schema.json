@@ -26,7 +26,8 @@
         "sections.faculty-section",
         "sections.reviews-section",
         "sections.newsletter-section",
-        "sections.contact-section"
+        "sections.contact-section",
+        "sections.blogs-section"
       ]
     },
     "slug": {

@@ -191,6 +191,19 @@ export interface PagePropertiesSeoSeo extends Schema.Component {
   };
 }
 
+export interface SectionsBlogsSection extends Schema.Component {
+  collectionName: 'components_sections_blogs_sections';
+  info: {
+    displayName: 'Blogs Section';
+  };
+  attributes: {
+    heading: Attribute.String;
+    style: Attribute.Enumeration<['classic', 'grid', 'list']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'classic'>;
+  };
+}
+
 export interface SectionsContactSection extends Schema.Component {
   collectionName: 'components_sections_contact_sections';
   info: {
@@ -326,6 +339,7 @@ declare module '@strapi/types' {
       'layout.header': LayoutHeader;
       'page-properties-seo.meta-tag': PagePropertiesSeoMetaTag;
       'page-properties-seo.seo': PagePropertiesSeoSeo;
+      'sections.blogs-section': SectionsBlogsSection;
       'sections.contact-section': SectionsContactSection;
       'sections.course-section': SectionsCourseSection;
       'sections.cta-section': SectionsCtaSection;

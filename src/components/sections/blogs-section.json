@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_sections_blogs_sections",
+  "info": {
+    "displayName": "Blogs Section"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": false
+    },
+    "style": {
+      "type": "enumeration",
+      "enum": [
+        "classic",
+        "grid",
+        "list"
+      ],
+      "required": true,
+      "default": "classic"
+    }
+  }
+}
