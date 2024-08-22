@@ -1,5 +1,5 @@
-import AuthLogo from "./extensions/cdm_logo.png";
-import favicon from "./extensions/cdm_logo.ico";
+import AuthLogo from "./extensions/sierra-logo.png";
+import favicon from "./extensions/sierra-logo.ico";
 
 export default {
   config: {
@@ -24,11 +24,11 @@ export default {
     },
     translations: {
       en: {
-        "app.components.LeftMenu.navbrand.title": "CDM CMS",
+        "app.components.LeftMenu.navbrand.title": "SIERRA",
   
         // "app.components.LeftMenu.navbrand.workplace": "Testing",
   
-        "Auth.form.welcome.title": "Welcom to CDM CMS",
+        "Auth.form.welcome.title": "Welcom to SIERRA CMS",
   
         "Auth.form.welcome.subtitle": "Login to your account",
   
