@@ -39,11 +39,6 @@ export interface ComponentsCourse extends Schema.Component {
   };
   attributes: {
     logo: Attribute.Media<'images'> & Attribute.Required;
-    name: Attribute.Relation<
-      'components.course',
-      'oneToOne',
-      'api::course.course'
-    >;
     description: Attribute.Text & Attribute.Required;
     link: Attribute.Component<'components.link'> & Attribute.Required;
   };
@@ -61,20 +56,6 @@ export interface ComponentsFeature extends Schema.Component {
   };
 }
 
-export interface ComponentsInstructor extends Schema.Component {
-  collectionName: 'components_components_instructors';
-  info: {
-    displayName: 'Instructor';
-  };
-  attributes: {
-    instructor: Attribute.Relation<
-      'components.instructor',
-      'oneToOne',
-      'api::instructor.instructor'
-    >;
-  };
-}
-
 export interface ComponentsLink extends Schema.Component {
   collectionName: 'components_components_links';
   info: {
@@ -86,6 +67,29 @@ export interface ComponentsLink extends Schema.Component {
     url: Attribute.String;
     isExternal: Attribute.Boolean & Attribute.DefaultTo<false>;
     page: Attribute.Relation<'components.link', 'oneToOne', 'api::page.page'>;
+  };
+}
+
+export interface ComponentsPackageFeature extends Schema.Component {
+  collectionName: 'components_components_package_features';
+  info: {
+    displayName: 'Package Feature';
+  };
+  attributes: {
+    text: Attribute.String;
+  };
+}
+
+export interface ComponentsPackage extends Schema.Component {
+  collectionName: 'components_components_packages';
+  info: {
+    displayName: 'Package';
+  };
+  attributes: {
+    category: Attribute.String & Attribute.Required;
+    pricePerMonth: Attribute.BigInteger & Attribute.Required;
+    feature: Attribute.Component<'components.package-feature', true> &
+      Attribute.Required;
   };
 }
 
@@ -127,11 +131,6 @@ export interface ComponentsStudent extends Schema.Component {
   attributes: {
     name: Attribute.String & Attribute.Required;
     image: Attribute.Media<'images'>;
-    course: Attribute.Relation<
-      'components.student',
-      'oneToOne',
-      'api::course.course'
-    >;
   };
 }
 
@@ -191,6 +190,24 @@ export interface PagePropertiesSeoSeo extends Schema.Component {
   };
 }
 
+export interface SectionsAboutUs extends Schema.Component {
+  collectionName: 'components_sections_about_uses';
+  info: {
+    displayName: 'About Us';
+  };
+  attributes: {
+    heading: Attribute.String & Attribute.Required;
+    content: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'Markdown';
+          preset: 'rich';
+        }
+      >;
+  };
+}
+
 export interface SectionsBlogsSection extends Schema.Component {
   collectionName: 'components_sections_blogs_sections';
   info: {
@@ -204,6 +221,16 @@ export interface SectionsBlogsSection extends Schema.Component {
   };
 }
 
+export interface SectionsCheckBill extends Schema.Component {
+  collectionName: 'components_sections_check_bills';
+  info: {
+    displayName: 'Check Bill';
+  };
+  attributes: {
+    heading: Attribute.String & Attribute.Required;
+  };
+}
+
 export interface SectionsContactSection extends Schema.Component {
   collectionName: 'components_sections_contact_sections';
   info: {
@@ -211,21 +238,6 @@ export interface SectionsContactSection extends Schema.Component {
   };
   attributes: {
     name: Attribute.String;
-  };
-}
-
-export interface SectionsCourseSection extends Schema.Component {
-  collectionName: 'components_sections_course_sections';
-  info: {
-    displayName: 'Course Section';
-    icon: 'apps';
-    description: '';
-  };
-  attributes: {
-    heading: Attribute.String & Attribute.Required;
-    subHeading: Attribute.Text & Attribute.Required;
-    link: Attribute.Component<'components.link'>;
-    courses: Attribute.Component<'components.course', true>;
   };
 }
 
@@ -242,21 +254,6 @@ export interface SectionsCtaSection extends Schema.Component {
     buttonLink: Attribute.Component<'components.button-link'> &
       Attribute.Required;
     image: Attribute.Media<'images'> & Attribute.Required;
-  };
-}
-
-export interface SectionsFacultySection extends Schema.Component {
-  collectionName: 'components_sections_faculty_sections';
-  info: {
-    displayName: 'Faculty Section';
-    icon: 'apps';
-    description: '';
-  };
-  attributes: {
-    heading: Attribute.String & Attribute.Required;
-    subHeading: Attribute.Text & Attribute.Required;
-    instructors: Attribute.Component<'components.instructor', true> &
-      Attribute.Required;
   };
 }
 
@@ -308,6 +305,19 @@ export interface SectionsNewsletterSection extends Schema.Component {
   };
 }
 
+export interface SectionsPackage extends Schema.Component {
+  collectionName: 'components_sections_packages';
+  info: {
+    displayName: 'Package Section';
+    description: '';
+  };
+  attributes: {
+    heading: Attribute.String & Attribute.Required;
+    package: Attribute.Component<'components.package', true> &
+      Attribute.Required;
+  };
+}
+
 export interface SectionsReviewsSection extends Schema.Component {
   collectionName: 'components_sections_reviews_sections';
   info: {
@@ -323,6 +333,16 @@ export interface SectionsReviewsSection extends Schema.Component {
   };
 }
 
+export interface SectionsSpeedtestSection extends Schema.Component {
+  collectionName: 'components_sections_speedtest_sections';
+  info: {
+    displayName: 'Speedtest Section';
+  };
+  attributes: {
+    heading: Attribute.String & Attribute.Required;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -330,8 +350,9 @@ declare module '@strapi/types' {
       'components.contact': ComponentsContact;
       'components.course': ComponentsCourse;
       'components.feature': ComponentsFeature;
-      'components.instructor': ComponentsInstructor;
       'components.link': ComponentsLink;
+      'components.package-feature': ComponentsPackageFeature;
+      'components.package': ComponentsPackage;
       'components.reviews': ComponentsReviews;
       'components.social-link-image': ComponentsSocialLinkImage;
       'components.student': ComponentsStudent;
@@ -339,15 +360,17 @@ declare module '@strapi/types' {
       'layout.header': LayoutHeader;
       'page-properties-seo.meta-tag': PagePropertiesSeoMetaTag;
       'page-properties-seo.seo': PagePropertiesSeoSeo;
+      'sections.about-us': SectionsAboutUs;
       'sections.blogs-section': SectionsBlogsSection;
+      'sections.check-bill': SectionsCheckBill;
       'sections.contact-section': SectionsContactSection;
-      'sections.course-section': SectionsCourseSection;
       'sections.cta-section': SectionsCtaSection;
-      'sections.faculty-section': SectionsFacultySection;
       'sections.feature-section': SectionsFeatureSection;
       'sections.hero-section': SectionsHeroSection;
       'sections.newsletter-section': SectionsNewsletterSection;
+      'sections.package': SectionsPackage;
       'sections.reviews-section': SectionsReviewsSection;
+      'sections.speedtest-section': SectionsSpeedtestSection;
     }
   }
 }

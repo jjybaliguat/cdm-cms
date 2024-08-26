@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_components_packages",
+  "info": {
+    "displayName": "Package"
+  },
+  "options": {},
+  "attributes": {
+    "category": {
+      "type": "string",
+      "required": true
+    },
+    "pricePerMonth": {
+      "type": "biginteger",
+      "required": true
+    },
+    "feature": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.package-feature",
+      "required": true
+    }
+  }
+}

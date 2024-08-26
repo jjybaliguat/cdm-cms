@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_sections_check_bills",
+  "info": {
+    "displayName": "Check Bill"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_sections_packages",
+  "info": {
+    "displayName": "Package Section",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "package": {
+      "displayName": "Package",
+      "type": "component",
+      "repeatable": true,
+      "component": "components.package",
+      "required": true
+    }
+  }
+}

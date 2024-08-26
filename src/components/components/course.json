@@ -14,11 +14,6 @@
       "multiple": false,
       "required": true
     },
-    "name": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::course.course"
-    },
     "description": {
       "type": "text",
       "required": true

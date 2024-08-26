@@ -1027,76 +1027,6 @@ export interface ApiBlogCategoryBlogCategory extends Schema.CollectionType {
   };
 }
 
-export interface ApiCourseCourse extends Schema.CollectionType {
-  collectionName: 'courses';
-  info: {
-    singularName: 'course';
-    pluralName: 'courses';
-    displayName: 'Course';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    name: Attribute.String & Attribute.Required;
-    department: Attribute.Relation<
-      'api::course.course',
-      'manyToOne',
-      'api::department.department'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::course.course',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::course.course',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiDepartmentDepartment extends Schema.CollectionType {
-  collectionName: 'departments';
-  info: {
-    singularName: 'department';
-    pluralName: 'departments';
-    displayName: 'Department';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    name: Attribute.String & Attribute.Required;
-    courses: Attribute.Relation<
-      'api::department.department',
-      'oneToMany',
-      'api::course.course'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::department.department',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::department.department',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiGlobalGlobal extends Schema.SingleType {
   collectionName: 'globals';
   info: {
@@ -1145,14 +1075,17 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
   attributes: {
     blocks: Attribute.DynamicZone<
       [
-        'sections.course-section',
         'sections.cta-section',
-        'sections.faculty-section',
         'sections.feature-section',
         'sections.hero-section',
         'sections.reviews-section',
         'sections.newsletter-section',
-        'sections.contact-section'
+        'sections.contact-section',
+        'sections.blogs-section',
+        'sections.check-bill',
+        'sections.package',
+        'sections.speedtest-section',
+        'sections.about-us'
       ]
     >;
     createdAt: Attribute.DateTime;
@@ -1166,38 +1099,6 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::homepage.homepage',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiInstructorInstructor extends Schema.CollectionType {
-  collectionName: 'instructors';
-  info: {
-    singularName: 'instructor';
-    pluralName: 'instructors';
-    displayName: 'Instructor';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    image: Attribute.Media<'images'> & Attribute.Required;
-    name: Attribute.String & Attribute.Required;
-    role: Attribute.String & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::instructor.instructor',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::instructor.instructor',
       'oneToOne',
       'admin::user'
     > &
@@ -1221,14 +1122,16 @@ export interface ApiPagePage extends Schema.CollectionType {
     blocks: Attribute.DynamicZone<
       [
         'sections.hero-section',
-        'sections.course-section',
         'sections.feature-section',
         'sections.cta-section',
-        'sections.faculty-section',
         'sections.reviews-section',
         'sections.newsletter-section',
         'sections.contact-section',
-        'sections.blogs-section'
+        'sections.blogs-section',
+        'sections.about-us',
+        'sections.check-bill',
+        'sections.package',
+        'sections.speedtest-section'
       ]
     >;
     slug: Attribute.UID<'api::page.page', 'name'>;
@@ -1266,11 +1169,8 @@ declare module '@strapi/types' {
       'plugin::email-designer.email-template': PluginEmailDesignerEmailTemplate;
       'api::blog.blog': ApiBlogBlog;
       'api::blog-category.blog-category': ApiBlogCategoryBlogCategory;
-      'api::course.course': ApiCourseCourse;
-      'api::department.department': ApiDepartmentDepartment;
       'api::global.global': ApiGlobalGlobal;
       'api::homepage.homepage': ApiHomepageHomepage;
-      'api::instructor.instructor': ApiInstructorInstructor;
       'api::page.page': ApiPagePage;
     }
   }

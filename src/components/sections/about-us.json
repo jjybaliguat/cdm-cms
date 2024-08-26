@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_sections_about_uses",
+  "info": {
+    "displayName": "About Us"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "customField",
+      "options": {
+        "output": "Markdown",
+        "preset": "rich"
+      },
+      "customField": "plugin::ckeditor.CKEditor"
+    }
+  }
+}

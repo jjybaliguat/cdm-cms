@@ -15,14 +15,17 @@
     "blocks": {
       "type": "dynamiczone",
       "components": [
-        "sections.course-section",
         "sections.cta-section",
-        "sections.faculty-section",
         "sections.feature-section",
         "sections.hero-section",
         "sections.reviews-section",
         "sections.newsletter-section",
-        "sections.contact-section"
+        "sections.contact-section",
+        "sections.blogs-section",
+        "sections.check-bill",
+        "sections.package",
+        "sections.speedtest-section",
+        "sections.about-us"
       ]
     }
   }

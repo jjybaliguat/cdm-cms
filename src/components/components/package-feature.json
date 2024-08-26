@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_components_package_features",
+  "info": {
+    "displayName": "Package Feature"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    }
+  }
+}
