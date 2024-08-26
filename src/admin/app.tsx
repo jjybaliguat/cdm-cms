@@ -28,7 +28,7 @@ export default {
   
         // "app.components.LeftMenu.navbrand.workplace": "Testing",
   
-        "Auth.form.welcome.title": "Welcom to SIERRA CMS",
+        "Auth.form.welcome.title": "Welcome to SIERRA CMS",
   
         "Auth.form.welcome.subtitle": "Login to your account",
   
